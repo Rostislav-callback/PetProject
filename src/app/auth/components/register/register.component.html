@@ -1,0 +1,52 @@
+<div class="register-container">
+  <div class="register-block">
+    <form class="register-form" [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+      <h1>Sign Up</h1>
+      <mat-form-field class="form-input" appearance="fill">
+        <mat-label>Username</mat-label>
+        <input type="text" 
+               matInput 
+               readonly
+               formControlName="username"
+               onfocus="this.removeAttribute('readonly')"
+               placeholder="Enter your username!">
+      </mat-form-field>
+      <mat-form-field class="form-input" appearance="fill">
+        <mat-label>Email</mat-label>
+        <input type="email" 
+               matInput 
+               readonly
+               formControlName="email"
+               onfocus="this.removeAttribute('readonly')"
+               placeholder="Enter your email!">
+      </mat-form-field>
+      <mat-form-field class="form-input" appearance="fill">
+        <mat-label>Password</mat-label>
+        <input type="password" 
+               matInput 
+               readonly
+               formControlName="password"
+               onfocus="this.removeAttribute('readonly')"
+               placeholder="Enter your password!">
+                <!--<mat-hint>Errors appear instantly!</mat-hint>
+                <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+                  Please enter a valid email address
+                </mat-error>
+                <mat-error *ngIf="emailFormControl.hasError('required')">
+                  Email is <strong>required</strong>
+                </mat-error>-->
+      </mat-form-field>
+      <div class="signup_buttons">
+        <button class="cencel_button"
+                [routerLink]="['']">
+          Cencel
+        </button>
+
+        <button class="signup_button" 
+                type="submit">
+          Sign up    
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

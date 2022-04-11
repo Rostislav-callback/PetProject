@@ -1,0 +1,126 @@
+a {
+    text-decoration: none;
+    color: #000000;
+}
+
+.register-container {
+    width: 400px;
+    height: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    margin-top: 150px;
+}
+
+.register-block {
+    padding: 20px;
+}
+
+.form-input {
+    width: 300px;
+    border-radius: 5px;
+}
+
+.signup_button{
+    margin-left: 50px;
+    height: 40px;
+    width: 100px;
+    border-radius: 5px;
+    position: relative;
+    transition: .5s;
+    overflow: hidden;
+    border: none;
+}
+
+.signup_button:hover {
+    background-color: rgb(179, 179, 179);
+}
+
+.signup_button::before,
+.signup_button::after { 
+    position: absolute;
+    content: '';
+    width: 60px;
+    height: 60px;
+    background-color: rgba(94, 94, 94, 0.849);
+    box-shadow: white;
+    left: 40px;
+    border-radius: 50%;
+    bottom: -60px;
+    opacity: .3;
+    z-index: 1;
+    transition: .5s;
+}
+
+.signup_button:active::after {
+    animation-name: signup;
+    animation-duration: .2s;
+    transition: .5s;
+    animation-fill-mode: backwards;
+}
+
+@keyframes signup {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(3);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.cencel_button{
+    margin-right: 50px;
+    height: 40px;
+    width: 100px;
+    border-radius: 5px;
+    position: relative;
+    transition: .5s;
+    overflow: hidden;
+    border: none;
+}
+
+.cencel_button:hover {
+    background-color: rgb(179, 179, 179);
+}
+
+.cencel_button::before,
+.cencel_button::after { 
+    position: absolute;
+    content: '';
+    width: 50px;
+    height: 50px;
+    background-color: rgba(94, 94, 94, 0.849);
+    box-shadow: white;
+    left: 23px;
+    border-radius: 50%;
+    bottom: -53px;
+    opacity: .3;
+    z-index: 1;
+    transition: .5s;
+}
+
+.cencel_button:active::after {
+    animation-name: cencel;
+    animation-duration: .2s;
+    transition: .5s;
+    animation-fill-mode: backwards;
+}
+
+@keyframes cencel {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(5);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
