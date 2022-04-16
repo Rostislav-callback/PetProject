@@ -124,3 +124,13 @@ a {
         transform: scale(1);
     }
 }
+
+.error-message {
+    width: 300px !important;
+    text-align: left;
+    margin-left: 30px;
+    color: red;
+    font-size: 15px;
+    font-family: 'Times New Roman';
+    font-weight: 500;
+}
