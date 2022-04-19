@@ -1,7 +1,9 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup,  Validators } from "@angular/forms";
 import { Store, select } from "@ngrx/store";
+
 import { Observable } from "rxjs";
+
 import { BackendErrorsInterface } from "src/app/interfaces/backendErrors.interface";
 import { RegisterRequestInterface } from "src/app/interfaces/registerRequest.interface";
 import { registerAction } from "src/app/store/actions/register.action";
@@ -18,15 +20,8 @@ export class RegisterComponent implements OnInit {
     validators = [Validators.required];
     isSubmitting$!: Observable<boolean>;
     backendErrors$!: Observable<BackendErrorsInterface | null>;
-    backendErrors!: BackendErrorsInterface;
-    errorMessages!: string[];
 
-
-    constructor(
-        private fb: FormBuilder,
-        private store: Store,
-        private authService: AuthService
-    ) {} 
+    constructor(private fb: FormBuilder, private store: Store) {} 
 
     ngOnInit(): void {
         this.initForm();
@@ -44,10 +39,6 @@ export class RegisterComponent implements OnInit {
     initializeValues(): void {
         this.isSubmitting$ = this.store.pipe(select(isSubmittingSelector));
         this.backendErrors$ = this.store.pipe(select(validationErrorsSelector));
-
-        this.backendErrors$.subscribe(data => {
-            console.log(data)
-        })
     }
 
     get email() {
@@ -68,9 +59,5 @@ export class RegisterComponent implements OnInit {
             email: ['', ...this.validators],
             password: ['', ...this.validators]
         })
-    }
-
-    ngOnDestroy() {
-
     }
 }

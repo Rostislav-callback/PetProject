@@ -1,0 +1,46 @@
+<mat-toolbar class="toolbar-block">
+    <div class="left_side-block">
+        <button class="side-menu-button" 
+                mat-icon-button class="example-icon" 
+                aria-label="Example icon-button with menu icon">
+            <mat-icon>menu</mat-icon>
+        </button>
+        <span class="side-menu-title">My App</span>
+    </div>
+    <div class="right_side-block">
+        <div class="toolbar_menu-block">
+            <span class="toolbar_menu-route" 
+                  style="width: 80px;" 
+                  [routerLink]="['/']">
+                Home
+                <mat-icon class="toolbar_menu-icon" aria-hidden="false">home</mat-icon>
+            </span>
+            <ng-container *ngIf="isLoggedIn$ | async">
+                <span class="toolbar_menu-route" 
+                      style="width: 122px;" 
+                      [routerLink]="['/dashboard']">
+                    Dashboard
+                    <mat-icon class="toolbar_menu-icon">dashboard</mat-icon>
+                </span>
+                <span class="toolbar_menu-route" 
+                      style="width: 107px;" 
+                      [routerLink]="['/aboutus']">
+                    About Us
+                    <mat-icon class="toolbar_menu-icon">question_answer</mat-icon>
+                </span>
+                <span class="toolbar_menu-route" 
+                      style="width: 107px;" 
+                      [routerLink]="['/settings']">
+                    Settings
+                    <mat-icon class="toolbar_menu-icon">settings</mat-icon>
+                </span>
+            </ng-container>
+        </div>
+        <ng-container *ngIf="IsGuest$ | async">
+            <div class="toolbar_buttons">
+                <span [routerLink]="['/login']">Sign In</span>
+                <span [routerLink]="['/register']">Sign Up</span>
+            </div>
+        </ng-container>
+    </div>
+</mat-toolbar>

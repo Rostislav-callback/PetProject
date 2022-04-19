@@ -12,11 +12,18 @@ import { AuthService } from "./services/auth.service";
 import { EffectsModule } from "@ngrx/effects";
 import { RegisterEffect } from "../store/effets/regster.effect";
 import { PersistanceService } from "./services/persistance.service";
+import { LoginEffect } from "../store/effets/login.effect";
+import { LoginComponent } from "./components/login/login.component";
+import { GetCurrentUserEffect } from "../store/effets/getCurrentUser.effect";
 
 const routes: Routes = [
   {
     path: 'register',
     component: RegisterComponent
+  },
+  {
+    path: 'login',
+    component: LoginComponent
   }
 ];
 
@@ -28,9 +35,9 @@ const routes: Routes = [
         MatFormFieldModule,
         MatInputModule,
         StoreModule.forFeature('auth', reduser),
-        EffectsModule.forFeature([RegisterEffect]),
+        EffectsModule.forFeature([RegisterEffect, LoginEffect, GetCurrentUserEffect]),
     ],
-    declarations: [RegisterComponent],
+    declarations: [RegisterComponent, LoginComponent],
     providers: [AuthService, PersistanceService]
 })
 export class AuthModule {}

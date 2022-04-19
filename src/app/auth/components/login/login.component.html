@@ -1,0 +1,43 @@
+<div class="login-container">
+    <div class="login-block">
+      <form class="login-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <h1>Sign In</h1>
+        <mat-form-field class="form-input" appearance="fill">
+          <mat-label>Email</mat-label>
+          <input type="email" 
+                 matInput 
+                 readonly
+                 formControlName="email"
+                 onfocus="this.removeAttribute('readonly')"
+                 placeholder="Enter your email!">
+        </mat-form-field>
+        <div class="error-message" *ngIf="this.backendErrors$ | async as errors">
+          <div *ngIf="(email!.invalid && (errors.email)) || errors.email"> 
+            Email {{errors.email}}
+          </div>
+        </div>
+        <mat-form-field class="form-input" appearance="fill">
+          <mat-label>Password</mat-label>
+          <input type="password" 
+                 matInput 
+                 readonly
+                 formControlName="password"
+                 onfocus="this.removeAttribute('readonly')"
+                 placeholder="Enter your password!">       
+        </mat-form-field>
+        <div class="error-message" *ngIf="this.backendErrors$ | async as errors">
+          <div *ngIf="(password!.invalid && (errors.password)) || errors.password"> 
+            Password {{errors.password}}
+          </div>
+        </div>
+        <div class="signin_buttons">
+          <button class="cencel_button" [routerLink]="['']">Cencel</button>
+          <button class="signin_button" 
+                  type="submit"
+                  [disabled]="isSubmitting$ | async">
+            Sign in    
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>

@@ -1,0 +1,38 @@
+%toolbarItems {
+    display: flex;
+    align-items: center;
+}
+
+.toolbar-block {
+    background-color: rgb(163, 252, 233);
+    justify-content: space-between;
+
+    .left_side-block {
+        @extend %toolbarItems;
+        gap: 10px;
+    }
+
+    .right_side-block {
+        @extend %toolbarItems;
+        gap: 50px;
+    }
+    
+    .toolbar_menu-block {     
+        gap: 50px;
+        @extend %toolbarItems;
+    }
+
+    .toolbar_buttons {
+        gap: 20px;
+        @extend %toolbarItems;
+    }
+}
+
+.toolbar_menu-route {
+    display: flex;
+    gap: 3px;
+   
+    & .toolbar_menu-icon {
+        padding-top: 3px;
+    }
+}
