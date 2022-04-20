@@ -1,0 +1,13 @@
+.spinner {
+    position: absolute;
+    zoom: 0.7;
+    z-index: 1000;
+    top: 400px;
+    left: 46%;
+}
+
+.mat-spinner {
+    ::ng-deep circle {
+        stroke: rgba(93, 255, 220, 0.8);
+    }
+}

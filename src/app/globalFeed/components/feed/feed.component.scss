@@ -1,0 +1,56 @@
+a {
+    text-decoration: none;
+    color: black;
+}
+
+a :hover {
+    cursor: pointer;
+}
+
+h1 {
+    margin: 0;
+}
+
+.article {
+    border: none;
+    border-radius: 5px;
+    padding: 20px;
+    width: 900px;
+    margin-bottom: 20px;
+    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2);
+}
+
+.author-meta {
+    display: flex;
+    column-gap: 10px;
+}
+
+.author-data {
+    display: inherit;
+    flex-flow: column nowrap;
+    row-gap: 3px;
+}
+
+.author-image {
+    border-radius: 50%;
+    height: 45px;
+    width: 45px;
+}
+
+.author-name {
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.article-title {
+    padding-top: 10px;
+    font-weight: 500;
+    font-size: 30px;
+}
+
+.article-description {
+    padding-top: 5px;
+    font-weight: 400;
+    padding-left: 2px;
+    opacity: 0.8;
+}

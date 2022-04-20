@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { StoreModule } from '@ngrx/store';
@@ -9,6 +9,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -17,12 +18,16 @@ import { environment } from '../environments/environment';
 import { HeaderComponent } from './header/header.component';
 import { PersistanceService } from './auth/services/persistance.service';
 import { AuthInterceptor } from './auth/services/authInterceptor.service';
-
+import { GlobalfeedModule } from './globalFeed/globalfeed.module';
+import { SpinnerComponent } from './spinner/spinner.component';
+import { ErrorMessageComponent } from './error/error-message.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent
+    HeaderComponent,
+    SpinnerComponent,
+    ErrorMessageComponent
   ],
   imports: [
     BrowserModule,
@@ -33,6 +38,8 @@ import { AuthInterceptor } from './auth/services/authInterceptor.service';
     MatToolbarModule,
     MatIconModule,
     MatButtonModule,
+    GlobalfeedModule,
+    MatProgressSpinnerModule,
     EffectsModule.forRoot([]),
     StoreModule.forRoot({}),
     StoreDevtoolsModule.instrument({ 
@@ -47,6 +54,13 @@ import { AuthInterceptor } from './auth/services/authInterceptor.service';
       useClass:  AuthInterceptor,
       multi: true
     }
+  ],
+  exports:[
+    SpinnerComponent,
+    ErrorMessageComponent
+  ],
+  schemas: [
+    CUSTOM_ELEMENTS_SCHEMA
   ],
   bootstrap: [AppComponent]
 })

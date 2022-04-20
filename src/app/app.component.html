@@ -1,2 +1,4 @@
 <app-header></app-header>
+<app-spinner *ngIf="isLoading$ | async"></app-spinner>
+<app-error-message *ngIf="error$ | async"></app-error-message>
 <router-outlet></router-outlet>
