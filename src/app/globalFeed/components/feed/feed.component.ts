@@ -1,33 +1,70 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { select, Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { GetFeedResponseInterface } from '../../interfaces/getFeedResponse.interface';
 import { getFeedAction } from '../../store/actions/getFeed.action';
-import { errorSelector, feedSelector, isLoadingSelector } from '../../store/selectors/feedSelector';
+import { 
+  errorSelector, 
+  feedSelector, 
+  isLoadingSelector 
+} from '../../store/selectors/feedSelector';
+import { parseUrl, stringify } from 'query-string';
 
 @Component({
   selector: 'app-feed',
   templateUrl: './feed.component.html',
   styleUrls: ['./feed.component.scss']
 })
-export class FeedComponent implements OnInit {
+export class FeedComponent implements OnInit, OnDestroy {
   @Input('apiUrl') apiUrlProps!: string;
 
   feed$!: Observable<GetFeedResponseInterface | null>;
+  queryParamsSubscription$!: Subscription
+  limit = environment.limit;
+  baseUrl!: string;
+  currentPage!: number;
 
-  constructor(private store: Store) { }
+  constructor(
+    private store: Store,
+    private router: Router,
+    private route: ActivatedRoute
+  ) { }
 
   ngOnInit(): void {
-    this.initializeValues();
-    this.fetchData();
-    
+    this.initValues();
+    this.initListeners();
   }
 
-  initializeValues(): void {
+  initValues(): void {
     this.feed$ = this.store.pipe(select(feedSelector));
+    this.baseUrl = this.router.url.split('?')[0];
+  }
+
+  initListeners() {
+    this.queryParamsSubscription$ = this.route.queryParams.subscribe(
+      (params: Params) => {
+        this.currentPage = Number(params.page || '1');
+        this.fetchData();
+      }
+    )
   }
 
   fetchData(): void {
-    this.store.dispatch(getFeedAction({url: this.apiUrlProps}));
+    const offset = this.currentPage * this.limit - this.limit;
+    const parsedUrl = parseUrl(this.apiUrlProps);
+    const stringifiedParams = stringify({
+      limit: this.limit,
+      offset,
+      ...parsedUrl.query
+    });
+    const apiUrlWithParams = `${parsedUrl.url}?${stringifiedParams}`;
+    
+    this.store.dispatch(getFeedAction({url: apiUrlWithParams}));
+  }
+
+  ngOnDestroy(): void {
+    this.queryParamsSubscription$.unsubscribe();
   }
 }

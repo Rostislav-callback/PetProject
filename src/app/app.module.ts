@@ -5,6 +5,7 @@ import { StoreModule } from '@ngrx/store';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { StoreRouterConnectingModule, routerReducer } from '@ngrx/router-store';
 
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
@@ -21,6 +22,7 @@ import { AuthInterceptor } from './auth/services/authInterceptor.service';
 import { GlobalfeedModule } from './globalFeed/globalfeed.module';
 import { SpinnerComponent } from './spinner/spinner.component';
 import { ErrorMessageComponent } from './error/error-message.component';
+import { PaginationModule } from './globalFeed/components/pagination/pagination.module';
 
 @NgModule({
   declarations: [
@@ -39,13 +41,15 @@ import { ErrorMessageComponent } from './error/error-message.component';
     MatIconModule,
     MatButtonModule,
     GlobalfeedModule,
+    PaginationModule,
     MatProgressSpinnerModule,
     EffectsModule.forRoot([]),
-    StoreModule.forRoot({}),
+    StoreModule.forRoot({router: routerReducer}),
     StoreDevtoolsModule.instrument({ 
       maxAge: 25, 
       logOnly: environment.production 
-    })
+    }),
+    StoreRouterConnectingModule.forRoot()
   ],
   providers: [
     PersistanceService,

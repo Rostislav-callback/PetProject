@@ -8,14 +8,14 @@ import { FeedComponent } from './feed/feed.component';
 import { GetFeedEffect } from '../store/effects/getFeed.effect';
 import { reducers } from '../store/reducers/reducers';
 import { FeedService } from '../services/feed.service';
-//import { ErrorMessageModule } from 'src/app/error/error-message.module';
+import { PaginationModule } from './pagination/pagination.module';
 
 @NgModule({
   declarations: [FeedComponent],
   imports: [
     CommonModule, 
     RouterModule,
-    //ErrorMessageModule,
+    PaginationModule,
     EffectsModule.forFeature([GetFeedEffect]),
     StoreModule.forFeature('feed', reducers)
   ],
