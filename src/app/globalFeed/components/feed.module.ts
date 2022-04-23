@@ -9,6 +9,7 @@ import { GetFeedEffect } from '../store/effects/getFeed.effect';
 import { reducers } from '../store/reducers/reducers';
 import { FeedService } from '../services/feed.service';
 import { PaginationModule } from './pagination/pagination.module';
+import { TagListModule } from './tag-list/tag-list.module';
 
 @NgModule({
   declarations: [FeedComponent],
@@ -16,6 +17,7 @@ import { PaginationModule } from './pagination/pagination.module';
     CommonModule, 
     RouterModule,
     PaginationModule,
+    TagListModule,
     EffectsModule.forFeature([GetFeedEffect]),
     StoreModule.forFeature('feed', reducers)
   ],

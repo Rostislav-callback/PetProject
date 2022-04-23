@@ -15,10 +15,12 @@
             <a [routerLink]="['/articles', article.slug]">
                 <h1 class="article-title">{{ article.title }}</h1>
                 <p class="article-description">{{ article.description }}</p>
+                <app-tag-list [tags]="article.tagList"></app-tag-list>
             </a>
         </div>
     </div>
-    <app-pagination 
+    <app-pagination *ngIf="feed$ | async as feedsData"
+        [total]="feedsData.articlesCount"
         [limit]="limit"
         [url]="baseUrl"
         [currentPage]="currentPage">

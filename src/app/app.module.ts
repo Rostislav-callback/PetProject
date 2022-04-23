@@ -29,7 +29,7 @@ import { PaginationModule } from './globalFeed/components/pagination/pagination.
     AppComponent,
     HeaderComponent,
     SpinnerComponent,
-    ErrorMessageComponent
+    ErrorMessageComponent,
   ],
   imports: [
     BrowserModule,

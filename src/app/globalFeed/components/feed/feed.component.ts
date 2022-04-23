@@ -23,6 +23,7 @@ export class FeedComponent implements OnInit, OnDestroy {
   feed$!: Observable<GetFeedResponseInterface | null>;
   queryParamsSubscription$!: Subscription
   limit = environment.limit;
+  total!: number | null;
   baseUrl!: string;
   currentPage!: number;
 
