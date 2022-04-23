@@ -1,0 +1,23 @@
+.tags-title {
+    text-align: center;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.tag-list {
+    display: flex;
+    list-style-type: none;
+    gap: 8px;
+    width: 320px;
+    flex-flow: row wrap;
+
+    .tag {
+        padding: 5px 10px;
+        border-radius: 15px;
+        font-weight: 600;
+        font-family: 'Times New Roman';
+        background-color: #a3fce9;
+        color: rgb(42, 42, 42);
+        text-decoration: none;
+    }
+}
