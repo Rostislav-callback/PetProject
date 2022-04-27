@@ -9,7 +9,7 @@ import { isLoggedInSelector } from '../store/selectors/authSelector';
   styleUrls: ['./feed-toggler.component.scss']
 })
 export class FeedTogglerComponent implements OnInit {
-  @Input('tagName') tagNameProps!: string | null;
+  @Input('tagName') tagNameProps!: string;
 
   isLoggedIn$!: Observable<boolean | null>
 

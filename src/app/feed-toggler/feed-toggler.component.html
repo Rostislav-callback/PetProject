@@ -13,7 +13,9 @@
             </a>
         </li>
         <li *ngIf="tagNameProps">
-            <a [routerLink]="['/tags', tagNameProps]" routerLinkActive="active" >
+            <a [routerLink]="['/tags', tagNameProps]" 
+               routerLinkActive="active" 
+               [routerLinkActiveOptions]="{exact: true}">
                 {{ tagNameProps }}
             </a>
         </li>

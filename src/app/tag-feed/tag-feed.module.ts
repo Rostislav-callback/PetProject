@@ -22,7 +22,7 @@ const routes: Routes = [
     CommonModule,
     PopularTagsModule,
     FeedModule,
-    RouterModule,
+    RouterModule.forChild(routes),
     FeedTogglerModule
   ]
 })

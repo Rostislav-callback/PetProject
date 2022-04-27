@@ -7,7 +7,7 @@ import { ActivatedRoute, Params } from '@angular/router';
   styleUrls: ['./tag-feed.component.scss']
 })
 export class TagFeedComponent implements OnInit {
-  tagName!: string | null;
+  tagName!: string;
   apiUrl!: string;
 
   constructor(private route: ActivatedRoute) { }
@@ -15,7 +15,7 @@ export class TagFeedComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe((params: Params) => {
       this.tagName = params.slug;
-      this.apiUrl = `/article?tag=${this.tagName}`;
+      this.apiUrl = `/articles?tag=${this.tagName}`;
     })
   }
 }

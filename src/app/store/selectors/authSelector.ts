@@ -1,5 +1,4 @@
 import { createFeatureSelector, createSelector } from "@ngrx/store";
-//import { AppStateInterface } from "src/app/interfaces/appState.interface";
 import { AuthStateInterface } from "src/app/interfaces/authState.interface";
 
 export const authFeatureSelector = createFeatureSelector<AuthStateInterface>('auth');
