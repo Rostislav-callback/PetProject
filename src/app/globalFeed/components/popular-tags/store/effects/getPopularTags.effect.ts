@@ -5,7 +5,11 @@ import { of } from "rxjs";
 import { switchMap, map, catchError } from "rxjs/operators";
 import { PopularTagType } from "src/app/globalFeed/interfaces/popularTag.type";
 import { PopularTagsService } from "src/app/globalFeed/services/popular-tags.service";
-import { getPopularTagsAction, getPopularTagsFailureAction, getPopularTagsSuccessAction } from "../actions/getPopularTags.action";
+import { 
+    getPopularTagsAction, 
+    getPopularTagsFailureAction, 
+    getPopularTagsSuccessAction 
+} from "../actions/getPopularTags.action";
 
 @Injectable()
 export class GetPopularTagsEffect {

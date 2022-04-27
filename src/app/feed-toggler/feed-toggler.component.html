@@ -1,0 +1,21 @@
+<div>
+    <ul>
+        <li *ngIf="isLoggedIn$ | async">
+            <a [routerLink]="['/feed']" routerLinkActive="active">
+                Your feed
+            </a>
+        </li>
+        <li>
+            <a [routerLink]="['/']" 
+               routerLinkActive="active" 
+               [routerLinkActiveOptions]="{exact: true}">
+                Global feed
+            </a>
+        </li>
+        <li *ngIf="tagNameProps">
+            <a [routerLink]="['/tags', tagNameProps]" routerLinkActive="active" >
+                {{ tagNameProps }}
+            </a>
+        </li>
+    </ul>
+</div>

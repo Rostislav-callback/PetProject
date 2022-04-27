@@ -23,13 +23,15 @@ import { GlobalfeedModule } from './globalFeed/globalfeed.module';
 import { SpinnerComponent } from './spinner/spinner.component';
 import { ErrorMessageComponent } from './error/error-message.component';
 import { PaginationModule } from './globalFeed/components/pagination/pagination.module';
+import { YourFeedModule } from './globalFeed/components/your-feed/your-feed.module';
+import { TagFeedModule } from './tag-feed/tag-feed.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     SpinnerComponent,
-    ErrorMessageComponent,
+    ErrorMessageComponent
   ],
   imports: [
     BrowserModule,
@@ -42,6 +44,8 @@ import { PaginationModule } from './globalFeed/components/pagination/pagination.
     MatButtonModule,
     GlobalfeedModule,
     PaginationModule,
+    YourFeedModule,
+    TagFeedModule,
     MatProgressSpinnerModule,
     EffectsModule.forRoot([]),
     StoreModule.forRoot({router: routerReducer}),

@@ -1,4 +1,4 @@
-<div *ngIf="popularTags$ | async">
+<div *ngIf="(popularTags$ | async) && !(isLoading$ | async)">
     <p class="tags-title">Popular Tags</p>
     <div class="tag-list">
         <a *ngFor="let tag of popularTags$ | async" [routerLink]="['/tags', tag]" class="tag">
